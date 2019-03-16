@@ -45,8 +45,8 @@ public class LinkCrawler {
     private int followRedirects(LinkInfo linkInfo){
         String URL = linkInfo.parsedUrl;
         try{
-            for(int counter = 0; counter < 4; counter++) {
-                if(counter == 4){
+            for(int counter = 0; counter < 3; counter++) {
+                if(counter == 3){
                     return 310;
                 }
                 Connection.Response response = Jsoup.connect(URL).followRedirects(false).execute();
@@ -103,6 +103,9 @@ public class LinkCrawler {
             System.out.println("Final URL: " + linkInfo.finalUrl);
             System.out.println("Secured: " + linkInfo.secured);
             System.out.println("Reachable: " + linkInfo.reachable);
+            System.out.println("Redirected URL(s):");
+            for(String redirectedUrl : linkInfo.redirectedURLs)
+                System.out.println("\t" + redirectedUrl);
             System.out.println("Total Access Duration: " + linkInfo.totalAccessDuration);
             System.out.println("Response Code: " + linkInfo.responseCode);
             System.out.println("Response Message: " + linkInfo.responseMessage);
