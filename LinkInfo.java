@@ -7,7 +7,6 @@ public class LinkInfo {
     Boolean reachable = false;
     ArrayList<String> redirectedURLs = new ArrayList<>();
     long totalAccessDuration = 0;
-    String contentLength;
     int responseCode = 0;
     String responseMessage;
 

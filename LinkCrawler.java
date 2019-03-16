@@ -28,6 +28,7 @@ public class LinkCrawler {
 
             LinkInfo linkInfo = new LinkInfo();
             linkInfo.parsedUrl = link.attr("abs:href");
+            linkInfo.finalUrl = linkInfo.parsedUrl;
             linkInfo.secured = checkIfSecured(linkInfo.parsedUrl);
             setResponseStatus(linkInfo);
 
@@ -54,7 +55,6 @@ public class LinkCrawler {
                     linkInfo.redirectedURLs.add(URL);
                 }else{
                     linkInfo.finalUrl = URL;
-                    linkInfo.contentLength = response.header("Content-Length");
                 }
             }
         } catch(Exception e){
@@ -104,7 +104,6 @@ public class LinkCrawler {
             System.out.println("Secured: " + linkInfo.secured);
             System.out.println("Reachable: " + linkInfo.reachable);
             System.out.println("Total Access Duration: " + linkInfo.totalAccessDuration);
-            System.out.println("Content Length: " + linkInfo.contentLength);
             System.out.println("Response Code: " + linkInfo.responseCode);
             System.out.println("Response Message: " + linkInfo.responseMessage);
             System.out.print("\n");
